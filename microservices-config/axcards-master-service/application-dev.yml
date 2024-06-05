@@ -1,0 +1,85 @@
+spring:
+  main:
+    allow-circular-references: 'true'
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  cloud:
+    config:
+      password: config@202009
+      username: config-user
+  datasource:
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    password: 3wokhg/XA5wc5QEykGaFcKmo14Y/Tto0+aEamb6idRrYGA==
+    username: axcards_master
+    url: jdbc:oracle:thin:@127.0.0.1:1521/orcl
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: 'true'
+    show-sql: 'true'
+  jackson:
+    default-property-inclusion: NON_NULL
+  config:
+    import: optional:configserver:http://127.0.0.1:7777
+  liquibase:
+    enabled: 'false'
+axcards:
+  event:
+    topic:
+      category:
+        business: auth-business
+        user: user-events
+        security: security-events
+        application: application-events
+kek:
+  folder:
+    path: C:/KEK/
+eureka:
+  port: '8888'
+  instance:
+    ip-address: 127.0.0.1
+  username: discoveryuser
+  ip: 127.0.0.1
+  password: discovery202009
+kafka:
+  bootstrap:
+    servers: 127.0.0.1:9092
+server:
+  port: '8090'
+backOff:
+  period: '1000'
+event:
+  log:
+    max-lines: '2'
+    directory: C:\logs
+timeout:
+  duration: '5000'
+retry:
+  maxDelay: '1000'
+  maxAttempts: '3'
+logging:
+  level:
+    root: info
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+  file:
+    name: C:/axcards-logs/axcards-master-service.log
+master:
+  crypto:
+    keys:
+      url: http://127.0.0.1:8090/master/encryption/cryptoconfiguration/
+log:
+  methodlevel:
+    execution:
+      time: 'false'
+max:
+  retry:
+    attempts: '3'
